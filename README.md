@@ -34,6 +34,8 @@ An extremely easy way to deploy a static website and optional api to Azure.
 11. The workflow has been automatically committed and run in GitHub, so your app should be accessible in the cloud within a minute or two.
 12. Select your static web app from the extension, right click it, and select `Browse`. You are now able to navigate to your web app in Azure.
 
+>**So far, the instructions don't include setting up the api!**
+
 ## Running in local environment
 
 Since the React part of the app was made using Create React App, you can run it locally by simply using `npm start`. However, if we were to have an api as well and would like to start both the api and the frontend code locally, we could use the [Static Web App CLI tool](https://github.com/Azure/static-web-apps-cli). Follow the installation and execution guides from the website.
