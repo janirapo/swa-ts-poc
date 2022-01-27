@@ -1,3 +1,7 @@
+# SWA-TS-POC
+
+This is a Proof-Of-Concept of a Static Web App coded in TypeScript
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
