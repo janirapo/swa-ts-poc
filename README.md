@@ -2,7 +2,49 @@
 
 This is a Proof-Of-Concept of a Static Web App coded in TypeScript
 
-# Getting Started with Create React App
+An extremely easy way to deploy a static website and optional api to Azure.
+
+## How to set everything up from a clean slate
+
+**Prerequisites**:
+- Azure subscription
+- VSCode
+- Azure Static Web Apps VSCode Extension
+- GitHub account
+- npm
+
+**Steps to create app:**
+
+1. Create a new create-react-app from template `npx create-react-app my-app --template typescript`
+2. Open app in VSCode `code my-app`
+3. Create repository in GitHub (e.g. my-app)
+4. Initialize git repository `git init`
+5. Make first commit `git commit -m "first commit"`
+6. Create main branch (in case it is not the default for you) `git branch -M main`
+7. Set remote origin `git remote add origin git@github.com:username/my-app.git`
+8. Push changes `git push -u origin main`
+9. Select _Static Web Apps_ extension and press the **+** sign
+    1. You will be asked to login to Azure
+    2. Select subscription
+    3. Select name for static web app (my-app)
+    4. Set app folder name. Use default `/`
+    5. Set api folder name. Use default `/api`
+    6. Login to GitHub when prompted
+10. The extension has now setup your static web app in Azure and created the required GitHub Workflows for deploying the code there (can be found under `./github/workflows` in your app folder).
+11. The workflow has been automatically committed and run in GitHub, so your app should be accessible in the cloud within a minute or two.
+12. Select your static web app from the extension, right click it, and select `Browse`. You are now able to navigate to your web app in Azure.
+
+## Running in local environment
+
+Since the React part of the app was made using Create React App, you can run it locally by simply using `npm start`. However, if we were to have an api as well and would like to start both the api and the frontend code locally, we could use the [Static Web App CLI tool](https://github.com/Azure/static-web-apps-cli). Follow the installation and execution guides from the website.
+
+The other option would be to run the api using azure functions core tools (which is in fact used here as well, but in the background), but you would have to start both parts separately.
+
+### TL;DR
+
+`swa start http://localhost:3000 --run "npm start" --api-location ./api`
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
