@@ -34,7 +34,21 @@ An extremely easy way to deploy a static website and optional api to Azure.
 11. The workflow has been automatically committed and run in GitHub, so your app should be accessible in the cloud within a minute or two.
 12. Select your static web app from the extension, right click it, and select `Browse`. You are now able to navigate to your web app in Azure.
 
->**So far, the instructions don't include setting up the api!**
+>**So far, we yet don't have an api!**
+
+**Setting up the API**
+
+1. Install Azure Functions VSCode extension
+2. Select _Create new project..._ from the Azure Functions extension
+3. Choose `api` as folder for the project
+4. Choose TypeScript as language
+5. Setup a function using HttpTrigger
+6. Choose function name
+7. Set Anonymous authorization (at least for now)
+8. Finally, go to the folder and run `npm install` and then `npm run build`
+9. Ready!
+
+The GitHub Action will automatically deploy the function under the Static Web App when you commit and push your changes to the repository.
 
 ## Running in local environment
 
@@ -44,8 +58,26 @@ The other option would be to run the api using azure functions core tools (which
 
 ### TL;DR
 
-`swa start http://localhost:3000 --run "npm start" --api-location ./api`
+Due to `swa` only running `func start` in the api folder right away, we first need to run
 
+```sh
+cd api
+npm run build
+```
+
+in order to build the api code. If your api is in plain javascript, this is not required.
+
+After that we can use the command:
+
+`swa start http://localhost:3000 --run "npm start" --api-location api`
+
+to startup both front- end backend in http://localhost:4280
+
+#### Taking things further
+
+To not having to remember all the parameters in the start command we have created a file called `swa-cli.config.json`, which contains hints for the swa cli. The run command, api folder and frontend proxy are all configured there under the name `app`, so now we can achieve the same as above by simply running `swa start app`.
+
+However, building of the api code is still required, since the swa cli runs `func start` in the folder instead of using any configurable commands. I will be posting this is an issue to the cli repository...
 ## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
